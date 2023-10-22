@@ -1,0 +1,380 @@
+*{
+ 
+ box-sizing: border-box;
+}
+
+html{
+    font-size: 14px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: whitesmoke;
+
+}
+a{
+    color: rgb(109, 104, 104);
+    font-weight: bolder;
+    text-decoration: none;
+    font-size:18px;
+}
+h1{
+    font-size: 26px;
+    font-weight: bolder;
+}
+h1 a{
+    font-size: 20px;
+}
+span{
+    font-size: 15px;
+}
+.container{
+    margin: 20px;
+    padding: 20px;
+    
+}
+.subforum{
+    margin-top: 20px;
+}
+.subforum-title{
+    
+    /* background-color: #FF3CAC;
+    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%); */
+    background-color: grey;
+    border: 2px black solid;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 4px;
+}
+.subforum-description{
+    margin-block: 0;
+}
+.subforum-row{
+    display: grid;
+    grid-template-columns: 14% 55% 16% 15%;
+}
+.subforum-column{
+    padding: 10px;
+    margin: 4px;
+    border-radius: 5px;
+    border: 2px black solid;
+    /* background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%); */
+
+}
+.centre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.subforum-icon{
+    font-size: 60px;
+
+}
+.subforum-divider{
+    display: none;
+}
+
+@media screen  and (max-width:728px){
+    .container{
+        margin: 10px;
+        padding:10px;
+
+    }
+    .subforum-row{
+        display: grid;
+        grid-template-columns: 25% 75%;
+        grid-template-rows: 65% 35%;
+    }
+    .subforum-stats{
+        font-size: 12px;
+    }
+    .subforum-divider{
+        display: block;
+        border: 0;
+        height: 1px;
+        background-color: black;
+    }
+}
+
+header{
+    margin-inline: 10px;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.navigation{
+    background-color: black;
+    padding: 10px;
+    width: 100%;
+    display: inline-block;
+    border-radius: 5px;
+    max-height: 80px;
+    margin-right:10px;
+}
+.nav-list{
+    list-style-type: none;
+    overflow:hidden;
+
+}
+.nav-items a{
+    float:right;
+    display: block;
+    text-align: center;
+    margin-inline: 20px;
+    font-size: 20px;
+    padding: 10px;
+    color: aliceblue;
+}
+.nav-items a:hover{
+    background-color: azure;
+    color: black;
+}
+.close-icon{
+    color: aliceblue;
+    font-size: 45px;
+    float:left;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.hide{
+    display: none;
+}
+.bar-icon{
+    font-size:45px;
+    display: inline-block;
+    margin-right: 10px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+@font-face {
+    font-family: aquire;
+    src: url(AquireBold-8Ma60.otf);
+}
+.brand{
+    font-size: 60px;
+    display: inline-block;
+    font-family: aquire;
+}
+@media screen and (max-width:460px){
+    .navigation{
+        max-height: auto;
+    }
+    .nav-items a{
+        float:right;
+        display: block;
+        text-align: center;
+        margin-inline: 3px;
+        font-size: 10px;
+        padding: 5px;
+        
+    }
+    .close-icon{
+      
+        font-size: 30px;
+      
+    }
+   
+    .bar-icon{
+        font-size:30px;
+       
+    }
+    .brand{
+        font-size: 20px;
+        
+    }
+}
+
+.search-box{
+    border: solid 1px black;
+    margin-top: 20px;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 1px 2px 3px black;
+}
+
+.search-box select{
+    padding: 10px;
+}
+.search-box input{
+    padding:10px;
+   
+}
+.search-box button{
+    padding: 10px;
+    background-color: black;
+    color: aliceblue;
+}
+.search-box button:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    box-shadow: 1px 2px 3px rgb(255, 255, 255);
+}
+ @media screen and (max-width:460px){
+    .search-box{
+       flex-direction: column;
+       gap: 5px;
+    }
+}  
+footer{
+    margin-top: 20px;
+    padding: 20px;
+    background-color: black;
+    color: aliceblue;
+    display: block;
+    text-align: center;
+}
+
+/* ##################################################### */
+/* post.html */
+
+.table-head{
+    display: flex;
+
+}
+.table-head div{
+    padding: 5px;
+    margin: 2px;
+    background-color: rgb(50, 50, 50);
+    font-weight: bold;
+    color: aliceblue;
+}
+.table-head .status{
+    flex:5%;
+    
+}
+.table-head .subject{
+    flex:70%;
+
+}
+.table-head .replies{
+    flex:10%;
+
+}
+.table-head .last-reply{
+    flex:15%;
+
+}
+.table-row{
+    display: flex;
+
+}
+.table-row .status,.table-row .subject,.table-row .replies,.table-row .last-reply{
+    padding: 5px;
+    margin: 2px;
+    background-color: gray;
+}
+
+.table-row a{
+    color: black;
+}
+.table-row .status{
+    flex: 5%;
+    font-size: 30px;
+    text-align: center;
+}
+.table-row .subject{
+    flex: 70%;
+}
+.table-row .replies{
+    flex: 10%;
+}
+
+.table-row .last-reply{
+    flex: 15%;
+}
+.pagination{
+    padding: 20px;
+    font-size: 15px;
+}
+.pagination a{
+    color: black;
+    margin-inline: 5px;
+    border: solid 0.5px black;
+
+}.pagination a:hover{
+    opacity: 0.5;
+
+}
+.note{
+    background-color: rgb(103, 102, 102);
+    color: aliceblue;
+    padding: 20px;
+    display:block;
+
+}
+.note span{
+    font-size: 15px;
+    margin-block: 5px;
+}
+.head{
+    display: flex;
+    background-color: grey;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.author{
+    flex:20%;
+}
+.content{
+    flex: 80%;
+}
+.body{
+    display: flex;
+    background-color: rgb(156, 151, 151);
+    padding: 10px;
+    margin: 5px;
+    border: black solid 2px;
+    border-radius: 5px;
+}
+
+.body .author .username{
+    font-size: 20px;
+    
+}
+.body .author .username a{
+    color: black;
+    
+}
+
+.body .author img{
+    max-width: 50px;
+    max-height: 80px;
+}
+.body .content .comment button{
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    box-shadow: 4px 6px black;
+    cursor: pointer;
+    float:right;
+}
+
+.comment-area{
+    margin-top: 50px;
+    display: none;
+}
+.comment-area textarea{
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    margin-block: 10px;
+}
+
+.comment-area input{
+    float: right;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.comment-area input:hover{
+    border: solid 1px black;
+}
+
+.commenys-container{
+    margin-top: 30px;
+    
+}

@@ -1,0 +1,66 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{% static 'style1.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+VWwaViK3GRxu1TGfHjG/hWiELU8R6b3ZLk1z3Pj5z9aBx" crossorigin="anonymous">
+
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <nav class="navigation hide" id="navigation">
+                <ul class="nav-list">
+                    <span style="margin-bottom: 10px;" class="close-icon" onclick="showIconBar()"><i class="fa fa-close"></i></span>
+                    <li class="nav-items">
+                        <a href="{%url 'home'%}">Home</a>
+                    </li>
+                    {%if request.user.is_authenticated%}
+                    <li class="nav-items">
+                        <a href="{%url 'logout'%}">Logout</a>
+                    </li>
+                    {%else%}
+                    <li class="nav-items">
+                        <a href="{%url 'signup'%}">Signup</a>
+                    </li>
+                    <li class="nav-items">
+                        <a href="{%url 'signin'%}">Signin</a>
+                    </li>
+                    {%endif%}
+                </ul>
+            </nav>
+            <a href="#" class="bar-icon" id="icon-bar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a>
+            <br>
+            
+            {%if user.is_authenticated%}
+            
+            
+            {%endif%}
+        </div>
+        <div class="brand">My Forum</div>
+        <div class="search-box">
+            <select name="" id="">
+                <option value="everything">Everything</option>
+                <option value="title">Title</option>
+                <option value="description">Description</option>
+            </select>
+            <input type="text" name="q" id="" placeholder="seach ..."> 
+            <button><i class="fa fa-search"></i></button>
+        </div>
+    </header>
+    <div style="font-size: 100px;font-weight: 300px;margin-left: 100px;"><button><a href="{%url 'create_post'%}">Create New Post</a></button></div>
+    {%block content%}
+    {%endblock content%}
+    <footer>
+        <span>&copy; &nbsp; Lokesh Kad | All rights Reserved</span>
+    </footer>
+    <script src="{% static 'main.js'%}"></script>
+    
+</body>
+</html>

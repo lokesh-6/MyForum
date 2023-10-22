@@ -1,0 +1,109 @@
+{%extends 'base.html'%}
+{%load hitcount_tags%}
+{%load static%}
+
+{%block content%}
+    <div class="container">
+        <div class="head">
+            <div class="author">Author</div>
+            <div class="content">Topic: {{post.title}} (Read {%get_hit_count for post%} Times)</div>
+        </div>
+        <div class="body">
+            <div class="author"> 
+                <div class="username"> <a href="#">{{post.user.fullname|title}}</a></div>
+                <div>Role</div>
+                <img src="{% static 'hamster.png'%}" alt="">
+
+                <div>Posts: <u>{{post.user.num_posts}}</u></div>
+                <div>Points: <u>{{post.user.points}}</u></div>
+            </div>
+            <div class="content">
+                {{post.content|safe}}<br><br>
+                <hr>
+                Regards Username
+                <div class="comment">
+                    <button onclick="showComment()">
+                        Comment
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+        <form action="." method="POST">
+            {%csrf_token%}
+        <div class="comment-area hide" id="comment-area">
+            <textarea name="comment-form" id="" placeholder="comment here...."></textarea>
+            <input type="submit" name="" id="" value="submit" name="comment-form"> 
+        </div>
+        </form>
+        {%for comment in post.comments.all%}
+        <div class="comments-container">
+            <!-- <div class="head">
+                <div class="author">Author</div>
+                <div class="content">Topic: posts Title</div>
+            </div> -->
+            <div class="body">
+                <div class="author"> 
+                    <div class="AnotherUser"> <a href="#">{{comment.user.fullname|title}}</a></div>
+                    <div>Role</div>
+                    <img src="{% static 'hamster.png'%}" alt="">
+                    <div>Posts: <u>{{comment.user.num_posts}}</u></div>
+                    <div>Points: <u>{{comment.user.points}}</u></div>
+                </div>
+                <div class="content">
+                    {{comment.content}} <br><br>
+                    <hr>
+                    Regards Username
+                    <div class="comment">
+                        <button onclick="showReply('comment{{comment.id}}')">
+                            Reply
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+            
+           
+        </div>
+        <form action="." method="POST">
+            {%csrf_token%}
+        <div class="comment-area hide" id="comment{{comment.id}}">
+            <textarea name="reply-form" id="" placeholder="reply here...."></textarea>
+            <input type="submit" name="" id="" value="submit" name="reply-form">
+            <input type="hiddhen" name="comment-id" value="{{comment.id}}">
+        </div>
+        </form>
+        {%for reply in comment.replies.all%}
+        <div class="comments-container" style="width: 95%;margin-left: 5%;">
+            <!-- <div class="head">
+                <div class="author">Author</div>
+                <div class="content">Topic: posts Title</div>
+            </div> -->
+            <div class="body">
+                <div class="author"> 
+                    <div class="AnotherUser"> <a href="#">{{reply.user.fullname|title}}</a></div>
+                    <div>Role</div>
+                    <img src="{% static 'hamster.png'%}" alt="">
+                    <div>Posts: <u>{{reply.user.num_posts}}</u></div>
+                    <div>Points: <u>{{reply.user.points}}</u></div>
+                </div>
+                <div class="content">
+                    {{reply.content}} <br><br>
+                    <hr>
+                    Regards Username
+                    
+                </div>
+                
+            </div>
+            
+           
+        </div>
+        
+        <!-- <div class="comment-area hide" id="reply-area">
+            <textarea name="reply" id="" placeholder="reply here...."></textarea>
+            <input type="submit" name="" id="" value="submit">
+        </div> -->
+        {%endfor%}
+        {%endfor%}
+    </div>
+    {%endblock content%}

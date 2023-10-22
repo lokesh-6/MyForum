@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+
+{%block content%}
+    <div class="container">
+        <div class="subforum">
+            <div class="subforum-title">
+                <h1>;Connect</h1>
+            </div>
+        {%for post in post%}
+            <div class="subforum-row">
+                <div class="subforum-icon subforum-column centre">
+                    <i class="fa fa-code"></i>
+                </div>
+                <div class="subforum-description subforum-column">
+                    <h1><a href="{{post.get_url}}">{{post.title}}</a></h1>
+                    <p>{{post.description}}.</p>
+                </div>
+                <div class="subforum-stats subforum-column centre">
+                    <span>{{post.num_posts}} posts | 15 Topics</span>
+                </div>
+                <div class="subforum-info subforum-column ">
+                    <b><a href="{{post.get_url}}">Last Post</a></b> by <a href="">{{post.last_posts.user.fullname|title}}</a>
+                    on <small>{{post.last_posts.date|date}}</small>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+        
+
+
+
+    </div>
+    <div class="forum-info">
+        <div class="chart">
+            My Forum -Stats <i class="fa fa-bar-chart"></i>
+        </div>
+    </div>
+   {%endblock content%}

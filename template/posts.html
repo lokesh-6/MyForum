@@ -1,0 +1,61 @@
+{%extends 'base.html'%}
+{%load hitcount_tags%}
+{%block content%}
+    <div class="container">
+        <div class="posts-table">
+            <div class="table-head">
+                <div class="status">Status</div>
+                <div class="subject">Subject</div>
+                <div class="replies">Replies/Views</div>
+                <div class="last-reply">Last Reply</div>
+            </div>
+        </div>
+        {%for post in post%}
+        <div class="table-row">
+            <div class="status"><i class="fa fa-bolt"></i></div>
+            <div class="subject"><a href="{{post.get_url}}">{{post.title}}</a>
+                <br>
+                <span>Started by <b><a href="#">{{post.user.fullname|title}}</a></b></span>
+            </div>
+           
+            
+            <div class="replies">
+                {{post.num_comments}}  Comments<br>Views :{%get_hit_count for post %}
+            </div>
+            <div class="last-reply">
+                {{post.last_reply.date}}
+                <br>
+                By <a href="#">{{post.last_reply.user}}</a>
+            </div>
+        </div>
+        {%endfor%}
+        <div class="pagination">
+            Pages:
+            {% for num_page in post.paginator.page_range %}
+                <a href="?page={{ num_page }}">{{ num_page }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="forum-info">
+        <div class="chart">
+            My Forum -Stats <i class="fa fa-bar-chart"></i>
+        </div>
+    </div>
+    <div class="note">
+        <span>
+            <i class=" fa fa-frown-o">&nbsp; 0 Engaement</i><br>
+        </span>
+        <span>
+            <i class=" fa fa-book">&nbsp; Low Engaement</i><br>
+        </span>
+        <span>
+            <i class=" fa fa-bolt">&nbsp; Popular Engaement</i><br>
+        </span>
+        <span>
+            <i class=" fa fa-rocket">&nbsp; High Engaement</i><br>
+        </span>
+        <span>
+            <i class=" fa fa-lock">&nbsp; Closed</i><br>
+        </span>
+    </div>
+    {%endblock content%}
